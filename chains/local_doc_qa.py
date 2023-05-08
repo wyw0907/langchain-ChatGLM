@@ -210,7 +210,7 @@ class LocalDocQA:
         related_docs = get_docs_with_score(related_docs_with_score)
         torch_gc()
         prompt = generate_prompt(related_docs, query)
-
+        print(prompt)
         # if streaming:
         #     for result, history in self.llm._stream_call(prompt=prompt,
         #                                                  history=chat_history):

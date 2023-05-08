@@ -49,10 +49,15 @@ def get_answer(query, vs_path, history, mode,
             history[-1][-1] += source
             yield history, ""
     else:
+        print(query)
+        print(history)
         for resp, history in local_doc_qa.llm._call(query, history,
                                                     streaming=streaming):
+            print(resp)
+            print(history)
             history[-1][-1] = resp + (
                 "\n\n当前知识库为空，如需基于知识库进行问答，请先加载知识库后，再进行提问。" if mode == "知识库问答" else "")
+            print(history)
             yield history, ""
     logger.flag([query, vs_path, history, mode], username=username)
 
